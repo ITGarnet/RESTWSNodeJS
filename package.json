@@ -1,5 +1,12 @@
-"scripts": {
-"start": "node app.js"
-},
-"main": "app.js"
-
+{
+  "name": "restws",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+   
+  }
+  "main":"app.js"
+}
