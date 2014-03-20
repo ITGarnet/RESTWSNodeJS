@@ -1,12 +1,13 @@
 {
-  "name": "restws",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "start": "node app.js"
-  },
-  "dependencies": {
-   	"express": "3.4.4",
-  },
-  "main":"app.js"
+	"name": "restws",
+	"description": "Nodejs RestWS API ",
+	"version": "0.0.1",
+	"private": true,
+	"dependences": {
+		"express": "3.x"
+	},
+	"scripts": {
+    	"start": "node app.js"
+  	},
+  	"main":"app.js"
 }
