@@ -3,8 +3,8 @@ var mongojs = require("mongojs");
 
 // creating a new server using the restify API
 
-var ip_addr = '127.0.0.1';
-var port 	= '8080';
+var ip_addr =  process.env.OPENSHIFT_NODEJS_IP || process.env.OPENSHIFT_INTERNAL_IP || 'localhost';
+var port 	=  process.env.OPENSHIFT_NODEJS_PORT ||  process.env.OPENSHIFT_INTERNAL_PORT || '8080';
 
 var server = restify.createServer({
 	name: "LinkWS"
@@ -27,9 +27,23 @@ server.use(restify.bodyParser());
 // more secure than simply allowing all such cross-origin requests.
 server.use(restify.CORS()); 
 
-var connection_string = '127.0.0.1:27017/LinkWS';
+var connection_string = process.env.OPENSHIFT_MYSQL_DB_HOST + ":" + 
+						process.env.OPENSHIFT_MYSQL_DB_PORT + '/' + 'LinkWS';
 var db = mongojs(connection_string, ['LinkWS']);
 var events = db.collection("events");
+
+/*
+var connection_string = process.env.OPENSHIFT_APP_NAME || 'node';
+if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
+  connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
+  process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
+  process.env.OPENSHIFT_MONGODB_DB_HOST + '/' +
+  process.env.OPENSHIFT_APP_NAME;
+}
+var db = mongojs(connection_string, ['resume']);
+*/
+
+
 
 // routes
 var PATH = '/events'
