@@ -3,8 +3,8 @@ var mongojs = require("mongojs");
 
 // creating a new server using the restify API
 
-var ip_addr =  process.env.OPENSHIFT_NODEJS_IP || process.env.OPENSHIFT_INTERNAL_IP || 'localhost';
-var port 	=  process.env.OPENSHIFT_NODEJS_PORT ||  process.env.OPENSHIFT_INTERNAL_PORT || '8080';
+var ip_addr =  process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+var port 	=  process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
 var server = restify.createServer({
 	name: "LinkWS"
